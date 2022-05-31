@@ -1,6 +1,7 @@
 package org.example;
 import org.testng.annotations.Test;
 
+
 public class TestSuite extends BaseTest {
     HomePage homepage = new HomePage();
     RegistrationPage registrationpage = new RegistrationPage();
@@ -24,7 +25,6 @@ public class TestSuite extends BaseTest {
         computerspage.clickOnDesktops();
         desktopspage.verifyUserIsOnDesktopsPage();
         desktopspage.clickOnAddToCartButtonOnBulidYourOwnComputer();
-        desktopspage.clickOnAddToCartButtonOnBulidYourOwnComputer();
         buildyourowncomputerpage.userEnterAllTheFieldsBeforeClickOnAddToCartButton();
         shoppingcartpage.verifyUserIsOnShoppingCartPage();
         shoppingcartpage.verifyCorrectProductIsAddedToShoppingCart();
@@ -45,12 +45,34 @@ public class TestSuite extends BaseTest {
         homepage.clickOnComputersPage();
         computerspage.clickOnDesktops();
         desktopspage.clickOnAddToCartButtonOnBulidYourOwnComputer();
-        desktopspage.clickOnEmailFriend();
+        buildyourowncomputerpage.clickOnEmailFriend();
         emailafriendpage.typeFriendEmail();
         emailafriendpage.typeYourEmail();
         emailafriendpage.typePersonalMessage();
         emailafriendpage.clickOnSendEmail();
         emailafriendpage.verifyUserIsAbleToSeeMessageHasBeenSentTxt();
+    }
+    @Test
+    public void verifyRegisterUserShouldBeableToVoteOnCommunityPoll(){
+        //on home page at the bottom of the page click on good option of community poll
+        homepage.clickOnGoodOnCommunityPollOnHomePage();
+        //click on vote button
+        homepage.clickOnVoteButton();
+        //verify non register user should see error message
+        homepage.verifyNonRegisterUserShouldSeeErrorMessage();
+        //click on register button
+        homepage.clickOnRegisterButton();
+        //enter all registration details
+        registrationpage.userRegistrationDetails();
+        //click on continue button after user is register
+        registrationpage.clickOnContinueButton();
+        //on home page at the bottom of the page click on good option of community poll
+        homepage.clickOnGoodOnCommunityPollOnHomePage();
+        //click on vote button
+        homepage.clickOnVoteButton();
+        //on home page verify user is able to see text msg vote(s)...
+        homepage.verifyTextVotesOnceRegisteruservotesOnCommunityPoll();
+
     }
 
 }

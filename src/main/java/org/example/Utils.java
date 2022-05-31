@@ -7,7 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.concurrent.TimeUnit;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -67,12 +67,14 @@ public class Utils extends BasePage {
     public static void waitForElementToBeClickable(int time, By by) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(by));
+
     }
 
     //parameterized method for wait element to be visible
     public static void waitForElementtoBeVisibile(int time, By by) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
     }
 
     //parameterized method for wait element to be selected
@@ -118,7 +120,8 @@ public class Utils extends BasePage {
 
     }
 
-    public static void takeSnapshot(String a) {
+    public static void takeSnapshot(String a)
+    {
         TakesScreenshot scrshot = ((TakesScreenshot) driver);
         File srcFile = scrshot.getScreenshotAs(OutputType.FILE);
         try {
@@ -128,4 +131,10 @@ public class Utils extends BasePage {
         }
 
     }
+    public static void waitAndClick(By by, Duration time) {
+        WebDriverWait wait = new WebDriverWait(driver, time);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        driver.findElement(by).click();
+    }
+
 }
