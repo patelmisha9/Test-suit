@@ -4,19 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Utils {
-    private final By _genderFemale = By.className("female");
-    private final By _firstNameFiled = By.id("FirstName");
-    private final By _lastNameField = By.xpath("//input[@id='LastName']");
-    private final By _dateOfBirthdayField = By.name("DateOfBirthDay");
-    private final By _birthdayMonthField = By.name("DateOfBirthMonth");
-    private final By _birthdayYearField = By.name("DateOfBirthYear");
-    private final By _enterEmailField = By.xpath("//input[@id='Email']");
-    private final By _enterPasswordField = By.name("Password");
-    private final By _enterConfirmedPasswordField = By.name("ConfirmPassword");
-    private final By _clickOnRegisterButton = By.name("register-button");
+    private By _genderFemale = By.id("gender-female");
+    private By _firstNameFiled = By.id("FirstName");
+    private By _lastNameField = By.xpath("//input[@id='LastName']");
+    private By _dateOfBirthdayField = By.name("DateOfBirthDay");
+    private By _birthdayMonthField = By.name("DateOfBirthMonth");
+    private By _birthdayYearField = By.name("DateOfBirthYear");
+    private By _enterEmailField = By.xpath("//input[@id='Email']");
+    private By _enterPasswordField = By.name("Password");
+    private By _enterConfirmedPasswordField = By.name("ConfirmPassword");
+    private By _clickOnRegisterButton = By.name("register-button");
+    private By _continue = By.xpath("//a[text()='Continue']");
 
     public void userRegistrationDetails() {
         //select on female
+
         clickonElement(_genderFemale);
 
         //enter first name
@@ -46,8 +48,14 @@ public class RegistrationPage extends Utils {
         //enter confirm password
         typeText(_enterConfirmedPasswordField, "0123456");
 
+
         // click on register button
         clickonElement(_clickOnRegisterButton);
 
+
+    }
+
+    public void clickOnContinueButton() {
+        clickonElement(_continue);
     }
 }

@@ -3,9 +3,10 @@ package org.example;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 public class DesktopsPage extends Utils {
-    private final By _clickonAddToCartButton = By.xpath("//div[@class=\"item-grid\"]/div[1]/div/div[2]/div[3]/div[2]/button[1]");
-    private final By _clickEmailFriend = By.className("email-a-friend");
+    private By _clickonAddToCartButton = By.xpath("//div[@class=\"item-grid\"]/div[1]/div/div[2]/div[3]/div[2]/button[1]");
 
     public void verifyUserIsOnDesktopsPage() {
         //verify on right url
@@ -15,14 +16,10 @@ public class DesktopsPage extends Utils {
     }
 
     public void clickOnAddToCartButtonOnBulidYourOwnComputer() {
-
         //click on add to cart button on Build your own computer
-        clickonElement(_clickonAddToCartButton);
+        waitAndClick(_clickonAddToCartButton, Duration.ofMillis(3000));
 
     }
 
-    public void clickOnEmailFriend() {
-        clickonElement(_clickEmailFriend);
 
-    }
 }

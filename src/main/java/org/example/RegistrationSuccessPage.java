@@ -11,4 +11,5 @@ public class RegistrationSuccessPage extends Utils{
         String actualMessage = gettextFromElement(By.className("result"));
         Assert.assertEquals(actualMessage, expectedMessage, "The register is not successfull");
     }
+
 }
