@@ -8,10 +8,12 @@ public class EmailAFriendPage extends Utils {
     private By _yourEmailAddressField = By.xpath("//input[@placeholder=\"Enter your email address.\"]");
     private By _personalMessageField = By.id("PersonalMessage");
     private By _sendEmail = By.name("send-email");
+    LoadProperties loadProperties = new LoadProperties();
 
     public void typeFriendEmail() {
+
         //type email in friend's email column
-        typeText(_emailFriendField, "Veronika1234@gmail.com");
+        typeText(_emailFriendField,loadProperties.getProperty("Friendemail"));
     }
 
     public void typeYourEmail() {
@@ -21,7 +23,7 @@ public class EmailAFriendPage extends Utils {
 
     public void typePersonalMessage() {
         //type personal message
-        typeText(_personalMessageField, "The product is good");
+        typeText(_personalMessageField, loadProperties.getProperty("Persaonalmessage"));
     }
 
     public void clickOnSendEmail() {

@@ -1,7 +1,10 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class HomePage extends Utils {
     private By _registerButton = By.className("ico-register");
@@ -65,5 +68,13 @@ public class HomePage extends Utils {
         //waitForElementtoBeVisibile(20,_textVote);
         Assert.assertTrue((gettextFromElement(_textVote).contains("vote(s)...")), "The votes cannot been seen");
 
+    }
+    //
+    public void getProductTitle(){
+        List<WebElement> productTitles = driver.findElements(By.xpath("//div[contains(@class,\"product-grid\")]//div[@class=\"item-grid\"]//h2"));
+        for (WebElement e:productTitles)
+              {
+                  System.out.println(e.getText());
+        }
     }
 }

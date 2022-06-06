@@ -9,7 +9,7 @@ public class DriverManager extends Utils{
 
 
     //before method
-    String browserName = "firefox";
+    String browserName = "chrome";
 
     public void openBrowser() {
         if(browserName.equalsIgnoreCase("Chrome")) {
@@ -31,7 +31,7 @@ public class DriverManager extends Utils{
         driver.get("https://demo.nopcommerce.com/");
     }
 
-    // closing the browser
+    //closing the browser
     public void closeBrowser() {
         driver.quit();
     }

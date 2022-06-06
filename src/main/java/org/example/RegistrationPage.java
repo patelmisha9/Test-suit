@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Utils {
+    LoadProperties loadProperties = new LoadProperties();
     private By _genderFemale = By.id("gender-female");
     private By _firstNameFiled = By.id("FirstName");
     private By _lastNameField = By.xpath("//input[@id='LastName']");
@@ -22,31 +23,34 @@ public class RegistrationPage extends Utils {
         clickonElement(_genderFemale);
 
         //enter first name
-        typeText((_firstNameFiled), "Veronica");
+        typeText((_firstNameFiled), loadProperties.getProperty("First"));
 
         //enter last name
-        typeText(_lastNameField, "Patel");
+        typeText(_lastNameField, loadProperties.getProperty("Last"));
 
         //select the day in date of birth drop down menu
         Select Birthday = new Select(driver.findElement(_dateOfBirthdayField));
-        Birthday.selectByIndex(12);
+        Birthday.selectByIndex(Integer.parseInt(loadProperties.getProperty("Dateofbirth")));
+
 
         //select the month
         Select birthmonth = new Select(driver.findElement(_birthdayMonthField));
-        birthmonth.selectByValue("3");
+        birthmonth.selectByValue(loadProperties.getProperty("Birthmonth"));
+
 
         //select the year
         Select birthyear = new Select(driver.findElement(_birthdayYearField));
-        birthyear.selectByVisibleText("1969");
+        birthyear.selectByVisibleText(loadProperties.getProperty("Birthyear"));
+
 
         //enter email
-        typeText(_enterEmailField, "tkpatel1102" + randomDate() + "@gmail.com");
+        typeText(_enterEmailField, loadProperties.getProperty("Emailpartone") + randomDate() + loadProperties.getProperty("Emailparttwo"));
 
         //enter password
-        typeText(_enterPasswordField, "0123456");
+        typeText(_enterPasswordField, (loadProperties.getProperty("Password")));
 
         //enter confirm password
-        typeText(_enterConfirmedPasswordField, "0123456");
+        typeText(_enterConfirmedPasswordField, loadProperties.getProperty("Confirmedpassword"));
 
 
         // click on register button

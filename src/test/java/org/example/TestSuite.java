@@ -1,4 +1,5 @@
 package org.example;
+
 import org.testng.annotations.Test;
 
 
@@ -52,8 +53,9 @@ public class TestSuite extends BaseTest {
         emailafriendpage.clickOnSendEmail();
         emailafriendpage.verifyUserIsAbleToSeeMessageHasBeenSentTxt();
     }
+
     @Test
-    public void verifyRegisterUserShouldBeableToVoteOnCommunityPoll(){
+    public void verifyRegisterUserShouldBeableToVoteOnCommunityPoll() {
         //on home page at the bottom of the page click on good option of community poll
         homepage.clickOnGoodOnCommunityPollOnHomePage();
         //click on vote button
@@ -74,5 +76,10 @@ public class TestSuite extends BaseTest {
         homepage.verifyTextVotesOnceRegisteruservotesOnCommunityPoll();
 
     }
+    @Test
+    public void VerifyUserShouldBeAbleToClickNavigateFacebookPageByClikingOnFacebookIconOnHomePage(){
+        //user is on home page
+        //click on facebook icon on homepage
 
+    }
 }
