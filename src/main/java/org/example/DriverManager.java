@@ -33,6 +33,6 @@ public class DriverManager extends Utils{
 
     //closing the browser
     public void closeBrowser() {
-        driver.quit();
+        driver.close();
     }
 }

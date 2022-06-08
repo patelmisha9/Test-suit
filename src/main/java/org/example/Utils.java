@@ -4,9 +4,13 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.io.File;
 import java.io.IOException;
@@ -117,7 +121,6 @@ public class Utils extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void takeSnapshot(String a)
@@ -137,4 +140,10 @@ public class Utils extends BasePage {
         driver.findElement(by).click();
     }
 
+public static void selectDropDownByValue(By by,String value){
+    Select dropDown = new Select(driver.findElement(by));
+    dropDown.selectByValue(value);
+
+
+}
 }
