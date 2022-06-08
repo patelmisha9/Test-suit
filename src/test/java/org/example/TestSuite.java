@@ -12,6 +12,7 @@ public class TestSuite extends BaseTest {
     ShoppingCartPage shoppingcartpage = new ShoppingCartPage();
     ComputersPage computerspage = new ComputersPage();
     EmailAFriendPage emailafriendpage = new EmailAFriendPage();
+    NewReleasePage newReleasePage = new NewReleasePage();
 
     @Test
     public void userShouldBeAbleToRegisterSuccessfully() {
@@ -76,10 +77,65 @@ public class TestSuite extends BaseTest {
         homepage.verifyTextVotesOnceRegisteruservotesOnCommunityPoll();
 
     }
+
+   @Test
+    public void VerifyProductsTitlesAreVisibleOnhomePage() {
+       homepage.getProductTitle();
+   }
+
     @Test
-    public void VerifyUserShouldBeAbleToClickNavigateFacebookPageByClikingOnFacebookIconOnHomePage(){
+    public void VerifyUserShouldBeAbleToClickAndNavigateFacebookPageByClikingOnFacebookIconOnHomePage() {
         //user is on home page
         //click on facebook icon on homepage
+        homepage.VerifyUserIsAbleToClickonFacebookIconOnHomePage();
+        //verifying that user is on correct window with correct url
+        homepage.VerifyTheUrlOnceUserClickOnFaceBookIconUserShouldBeNewWindowWithCorrectUrl();
+    }
+
+    @Test
+    public void verifyUserIsAbleSeePopMessageIfClickOnVoteButtonWithoutSelectingAnyOption() {
+        //click on vote button
+        homepage.clickOnVoteButton();
+        //verifying the popup message
+        homepage.VerifyUserIsAbleToSeePopUpMessagePleaseSelectAnAnswerIfTryToVoteDirectlyWithoutSelectingAnyOptionOnCommunityPoll();
+        //accepting the popup message
+        homepage.clickOnOkButtonAndAcceptPopUpMessage();
+    }
+
+    @Test
+    public void verifyUserOnNewReleasePageAndAbleToAddNewComment() {
+        //click on middle details button under news on homepage
+        homepage.userClickonSecondoptionOfNewReleaseOnHomepageUnderNews();
+        //verify user on right page
+        newReleasePage.verifyUserIsOnRightPage();
+        //Enter title
+        newReleasePage.enterTitleName();
+        //Enter comment
+        newReleasePage.entercomment();
+        //Click on new comment button
+        newReleasePage.clickOnNewCommentButton();
+        //verify message has appeared after adding the comment
+        newReleasePage.verifyNewCommentHasBeenAdd();
+
 
     }
+
+    @Test
+    public void userShouldBeAbleToSearchTheNikeProductsUsingSearchButton() {
+        //user should be able to search products
+        homepage.userShouldBeToSearchprodut("Nike");
+    }
+    @Test
+    public void userShouldBeAbleToDoSortByZtoAAndProductShouldBeSortedAccording(){
+        //click on computer page
+        homepage.clickOnComputersPage();
+        //click on desktop page
+        computerspage.clickOnDesktops();
+        //verify user on desktop page
+        desktopspage.verifyUserIsOnDesktopsPage();
+        //verify user can sort the product using sort by functionality
+        desktopspage.userShouldBeSortProductsByZToAAndProductShouldBeSortedAccording();
+
+    }
+
 }
