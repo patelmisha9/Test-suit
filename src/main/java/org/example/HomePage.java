@@ -135,4 +135,14 @@ public void userShouldBeToSearchprodut(String text)
             Assert.assertTrue( e.getText().contains(firstlettercapital));
         }
     }
+    public void clickOnAllPages(String text)
+    {
+        clickonElement(By.linkText(text));
+    }
+    public void verifyUrlForAllPages(String text1)
+    {
+        Assert.assertEquals(driver.getCurrentUrl(),text1);
+
+    }
+
 }
